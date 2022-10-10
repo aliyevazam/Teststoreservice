@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package stores;
+
+
+service StoreService {
+    rpc CreateStore(Store) returns (Store);
+    rpc CreateAddress(Address) returns(Empty);
+    rpc CreateStoresProduct(stores_product) returns(Empty);
+}
+
+message Empty {}
+
+message stores_product {
+    repeated Store store_id = 1;
+    repeated Address address_id = 2;
+}
+
+message Store {
+    int64 id = 1;
+    string name = 2;
+    repeated Address address = 3; 
+}
+
+
+message Address{
+    int64 id = 1;
+    string district = 2;
+    string street = 3;
+}
